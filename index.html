@@ -39,12 +39,10 @@
 		<script>
 			function el(tag, a, text) {
 				var node = document.createElement(tag);
-				var i = 0;
-				if (a.length != 0)
-					while (i < a.length - 1) {
-						node.setAttribute(a[i], a[++i]);
-						i++;
-					}
+				a.forEach(function(x, i){
+					if(i % 2 == 0) return;
+					node.setAttribute(a[i-1], a[i]);
+				});
 				node.innerHTML = text;
 				return node;
 			}
